@@ -1,5 +1,13 @@
 # TODO
 
+## Create More inline documentation
+
+* Document methods for RDOC.
+
+## Allow args 
+
+* Passed to *snorby_suite* binary
+
 ## Provide a YAML configuration file that allows for configuration of:
 
 * Make barnyard2 configuration file temporary and dynamic
