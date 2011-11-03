@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+#
+$:.unshift(File.dirname(__FILE__))
+require 'rubygems'
+require 'snorby_suite'
+require 'tempfile'
+
+factory = SnorbySuite::Pcapfactory.new
+
+def pcapfile_broke
+  pcapfile = Tempfile.new('pcapfactory')
+  pcapfile.close(unlink_now=false)
+  return pcapfile.path
+end
+
+def pcapfile
+  "/tmp/pcapfactory.pcap.#{$$}"
+end
+
+loop do
+
+  factory.filename = pcapfile
+  puts "Regenerating pcap file '#{factory.filename}' .."
+  
+  factory.generate
+  factory.write_pcaps
+  
+  puts "Running Snort.."
+  `snort -r #{factory.filename} -c #{SnorbySuite::SNORTCONF} -l #{SnorbySuite::UNIFIEDDIR} -q`
+  puts "Closing Snort."
+  
+  sleep(15)
+  factory.flush
+end
+
+

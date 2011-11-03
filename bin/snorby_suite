@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+begin
+  require 'rubygems'
+  require 'snorby_suite'
+rescue LoadError
+  puts "Failed to load proper gems"
+end
+
+$:.unshift(File.dirname(__FILE__))
+$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
+SnorbySuite::ForemanController.new.start()
+
+

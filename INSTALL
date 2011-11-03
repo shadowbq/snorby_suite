@@ -1,0 +1,14 @@
+## Installation
+Install Barnyard2 
+
+Unpack, change directories, configure with mysql support, make and install. 
+
+<pre>
+cd distro
+tar -zxvf barnyard2*.tar.gz
+cd barnyard2*
+./configure --with-mysql
+make
+sudo make install
+</pre>
+
