@@ -7,6 +7,8 @@ Gem::Specification.new do |s|
   s.version     = SnorbySuite::VERSION
   s.authors     = ["shadowbq"]
   s.email       = ["shadowbq@gmail.com"]
+  s.licenses    = ["MIT"]
+  s.rdoc_options = ["--main", "README.rdoc"]
   s.homepage    = ""
   s.summary     = %q{Snorby Development Test Suite}
   s.description = %q{Snorby development and testing suite for snort rails application.}
@@ -18,7 +20,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
-  # s.add_runtime_dependency "rest-client"
+  s.add_runtime_dependency "pcaprub"
+  s.add_runtime_dependency "packetfu", :git => 'https://github.com/todb/packetfu.git'
+  s.add_runtime_dependency "foreman"
+
 end

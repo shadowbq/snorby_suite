@@ -3,15 +3,8 @@
 $:.unshift(File.dirname(__FILE__))
 require 'rubygems'
 require 'snorby_suite'
-require 'tempfile'
 
 factory = SnorbySuite::Pcapfactory.new
-
-def pcapfile_broke
-  pcapfile = Tempfile.new('pcapfactory')
-  pcapfile.close(unlink_now=false)
-  return pcapfile.path
-end
 
 def pcapfile
   "/tmp/pcapfactory.pcap.#{$$}"
