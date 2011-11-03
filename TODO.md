@@ -4,15 +4,15 @@
 
 * Document methods for RDOC.
 
-## Allow args 
+## Allow args / argv / flags
 
-* Passed to *snorby_suite* binary
+* Allow args to be passed to *snorby_suite* binary
 
 ## Provide a YAML configuration file that allows for configuration of:
 
 * Make barnyard2 configuration file temporary and dynamic
 ** This will allow for a YAML configuration of database connector
-** No longer hardcode database connector to "snorby_development" / "root" / "password"
+** No longer hard-code database connector to "snorby_development" / "root" / "password"
 
 * Create Multiple Instances of barnyard to simulate multiple sensors points
 ** Instead of SENSOR:NULL 

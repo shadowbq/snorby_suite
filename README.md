@@ -10,8 +10,22 @@ snort alerts and the sheer numbers can be hard to model using just seed data.
 ## Snorby
 * [Snorby](https://github.com/Snorby/snorby) - Snorby is a ruby on rails web application for network security monitoring that interfaces with current popular intrusion detection systems (Snort, Suricata and Sagan). The basic fundamental concepts behind Snorby are simplicity, organization and power. The project goal is to create a free, open source and highly competitive application for network monitoring for both private and enterprise use.
 
-## Use rvm for best use case
-* see [INSTALL.rvm.md](blob/master/INSTALL.rvm.md)
+## Use rvm For Best Use Case
+* see [INSTALL.rvm.md](snorby_suite/blob/master/INSTALL.rvm.md)
+
+Turn on your gemset for snorby_suite via rvm 
+
+```bash
+user$ rvm 1.9.2@snorby_suite_env
+```
+
+Run Snorby Suite
+
+```bash
+user$ snorby_suite 
+```
+
+** From the author: I highly recommend anyone using snorby_suite to use rvm with a independent gemset ** 
 
 ## Bundled Components
 Snorby-Suite comes bundled the following security tools and applications:
@@ -34,7 +48,7 @@ Snorby-Suite comes bundled the following security tools and applications:
 2. Snort ~> [2.8, 2.9] - The snort daemon service is not required to be run, it will run as batch
 
 ## Barnyard2 Notes
-* see [INSTALL.barnyard2.md](blob/master/INSTALL.barnyard2.md)
+* see [INSTALL.barnyard2.md](snorby_suite/blob/master/INSTALL.barnyard2.md)
 * Barnyard2 distro is available in your gem path snorby_suite-*/disto/barnyard2.tar.gz.
 * Barnyard2 will report as a NULL interface sensor.
 

@@ -1,6 +1,6 @@
 # Snorby Suite
 
-## Installation for rvm with ruby 1.9.2 and a nonconflicting custom gemset for user 'johnsmith'
+## Installation for rvm with ruby 1.9.2 and a non-conflicting custom gemset for user 'johnsmith'
 
 Download and run the RVM installation script
 Installing the latest release version in git:
