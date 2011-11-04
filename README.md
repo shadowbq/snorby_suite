@@ -10,8 +10,8 @@ snort alerts and the sheer numbers can be hard to model using just seed data.
 ## Snorby
 * [Snorby](https://github.com/Snorby/snorby) - Snorby is a ruby on rails web application for network security monitoring that interfaces with current popular intrusion detection systems (Snort, Suricata and Sagan). The basic fundamental concepts behind Snorby are simplicity, organization and power. The project goal is to create a free, open source and highly competitive application for network monitoring for both private and enterprise use.
 
-## Use rvm For Best Use Case
-* see [INSTALL.rvm.md](snorby_suite/blob/master/INSTALL.rvm.md)
+## Use [rvm](http://beginrescueend.com/) For Best Use Case
+* See [INSTALL.rvm.md](snorby_suite/blob/master/INSTALL.rvm.md) for detailed setup instructions with snorby_suite.
 
 Turn on your gemset for snorby_suite via rvm 
 
@@ -25,7 +25,7 @@ Run Snorby Suite
 user$ snorby_suite 
 ```
 
-** From the author: I highly recommend anyone using snorby_suite to use rvm with a independent gemset ** 
+***From the author: Although not required, I highly recommend anyone using snorby_suite to use rvm with a independent gemset***
 
 ## Bundled Components
 Snorby-Suite comes bundled the following security tools and applications:
