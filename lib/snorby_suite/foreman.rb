@@ -11,7 +11,7 @@ module SnorbySuite
 
     attr_accessor :procfile
     
-    namespace :main do
+    
     desc "start [PROCESS]", "Start the application, or a specific process"
     method_option :concurrency, :type => :string,  :aliases => "-c", :banner => '"barnyard=3,alert_daemon=2"'
     
@@ -24,8 +24,8 @@ module SnorbySuite
         engine.start
       end
     end
-    end
-    namespace :procfile
+    
+    
     
     desc "create", "Create the procfile for the application, or a specific process"
     method_option :path, :aliases => "-d", :desc => "Directory to write procfile"
