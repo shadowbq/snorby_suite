@@ -22,6 +22,7 @@ user$ rvm 1.9.2@snorby_suite_env
 Current Versions of snorby_suite require a bundle installation of PACKETFU. Thus bundle exec 
 
 Run Snorby Suite w/bundle
+
 ```bash
 user$ bundle exec snorby_suite 
 ```
