@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_runtime_dependency "pcaprub"
-  s.add_runtime_dependency "packetfu", :git => 'https://github.com/todb/packetfu.git'
+  s.add_runtime_dependency "packetfu"
   s.add_runtime_dependency "foreman"
 
 end
