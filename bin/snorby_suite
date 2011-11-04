@@ -10,6 +10,5 @@ end
 $:.unshift(File.dirname(__FILE__))
 $:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
-SnorbySuite::ForemanController.new.start()
-
+SnorbySuite::ForemanController.start()
 

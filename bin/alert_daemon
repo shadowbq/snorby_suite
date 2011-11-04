@@ -7,7 +7,7 @@ require 'snorby_suite'
 factory = SnorbySuite::Pcapfactory.new
 
 def pcapfile
-  "/tmp/pcapfactory.pcap.#{$$}"
+  "/tmp/pcapfactory.#{(rand(899999)+100000)}-#{$$}.pcap"
 end
 
 loop do
