@@ -18,6 +18,13 @@ Turn on your gemset for snorby_suite via rvm
 ```bash
 user$ rvm 1.9.2@snorby_suite_env
 ```
+### Temporary Bundle woes
+Current Versions of snorby_suite require a bundle installation of PACKETFU. Thus bundle exec 
+
+Run Snorby Suite w/bundle
+```bash
+user$ bundle exec snorby_suite 
+```
 
 Run Snorby Suite
 
