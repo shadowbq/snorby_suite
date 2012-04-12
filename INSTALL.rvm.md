@@ -26,7 +26,7 @@ Reload shell configuration & test
 Close out your current shell or terminal session and open a new one. You may attempt reloading your .bash_profile with the following command:
 
 ```bash
-user$ source .bash_profile
+user$ source ~/.bash_profile
 ```
 
 Install Ruby 1.9.2 version for your rvm:
