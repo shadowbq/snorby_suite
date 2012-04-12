@@ -99,6 +99,8 @@ user$ git clone git://github.com/shadowbq/snorby_suite.git ~/snorby_suite
 ```bash
 user$ cd ~/snorby_suite
 [user@snorby_suite]$ bundle install
+[user@snorby_suite]$ gem build snorby_suite.gemspec 
+[user@snorby_suite]$ gem install ./snorby_suite-0.0.1.gem
 ```
 
 ## Install Snort / Barnyard2
@@ -118,6 +120,7 @@ pkg_add -r snort barnyard2
 ## Run Snorby Suite
 
 ```bash
+user$ cd ~
 user$ snorby_suite 
 ```
 
