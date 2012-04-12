@@ -87,7 +87,35 @@ Turn on your new rvm
 user$ rvm 1.9.2@snorby_suite_env
 ```
 
-Run Snorby Suite
+## Git Clone Snorby suite
+
+```bash
+user$ git clone git://github.com/shadowbq/snorby_suite.git ~/snorby_suite
+```
+
+
+## Run Bundler to install gem dependencies
+
+```bash
+user$ cd ~/snorby_suite
+[user@snorby_suite]$ bundle install
+```
+
+## Install Snort / Barnyard2
+
+* Ubuntu / Debian
+
+```bash
+apt-get install snort barnyard2
+```
+
+* FreeBSD
+
+```bash
+pkg_add -r snort barnyard2
+```
+
+## Run Snorby Suite
 
 ```bash
 user$ snorby_suite 
