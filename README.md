@@ -25,10 +25,18 @@ Run Snorby Suite
 user$ snorby_suite 
 ```
 
+Dynamic procs to load up X snort and barnyard via ENV['SUITE_SENSORS']
+
+```bash
+user$ SUITE_SENSORS="sensor1 sensor2 sensor3" snorby_suite
+```
+
 ***From the author: Although not required, I highly recommend anyone using snorby_suite to use rvm with a independent gemset***
 
 ## Bundled Components
 Snorby-Suite comes bundled the following security tools and applications:
+
+Snorby-Suite will inject alerts by default from 10 Sensors, to populate your data.
 
 ### Prebuilt Configuration Files
 * Snort IDS ~> [2.8, 2.9] - [More Info](http://www.snort.org/)
@@ -51,6 +59,9 @@ Snorby-Suite comes bundled the following security tools and applications:
 * see [INSTALL.barnyard2.md](snorby_suite/blob/master/INSTALL.barnyard2.md)
 * Barnyard2 distro is available in your gem path snorby_suite-*/disto/barnyard2.tar.gz.
 * Barnyard2 will report as a NULL interface sensor.
+
+* You need to use Barnyard2.1.10.beta or greater. Avaiable via github 
+ - https://github.com/firnsy/barnyard2
 
 ## Feedback/Support
 * [Snorby-Suite Issues Page](snorby-suite/issues)
