@@ -20,6 +20,7 @@ sudo make install
 * You can modify the `config hostname` to have multiple sensors insert data into snorby via the snorby_suite.
 
 File: /home/johnsmith/.rvm/gems/ruby-1.9.3-p125@snorby_suite_env/gems/snorby_suite-0.0.1/etc/barnyard2.conf
+
 ```bash
 
 #-------------------------------------------------------------
