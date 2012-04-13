@@ -21,14 +21,18 @@ module SnorbySuite
       
       begin
         File.open(SnorbySuite::EMBEDDED_PROCFILE, "w") do |file|
-          file.puts "alert_daemon: alert_daemon"
-          file.puts "barnyard: barnyard2 -c #{SnorbySuite::BARNYARD} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG} -d #{SnorbySuite::UNIFIEDDIR} -l #{SnorbySuite::LOGDIR} -f snort.u2 -w #{SnorbySuite::WALDO} --nolock-pidfile"
+          SnorbySuite::SENSORS.each |rsensor| do 
+            file.puts "alert_daemon_#{rsensor}: alert_daemon #{rsensor}"
+            file.puts "barnyard_#{rsensor}: barnyard2 -c #{SnorbySuite::BARNYARD} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG} -d #{SnorbySuite::UNIFIEDDIR} -l #{SnorbySuite::LOGDIR} -f snort.u2.#{rsensor} -w #{SnorbySuite::WALDO}.#{rsensor} --nolock-pidfile"
+          end
         end
         SnorbySuite::EMBEDDED_PROCFILE
       rescue
         File.open("Procfile", "w") do |file|
-          file.puts "alert_daemon: alert_daemon"
-          file.puts "barnyard: barnyard2 -c #{SnorbySuite::BARNYARD} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG} -d #{SnorbySuite::UNIFIEDDIR} -l #{SnorbySuite::LOGDIR} -f snort.u2 -w #{SnorbySuite::WALDO} --nolock-pidfile"
+          SnorbySuite::SENSORS.each |rsensor| do 
+            file.puts "alert_daemon_#{rsensor}: alert_daemon #{rsensor}"
+            file.puts "barnyard_#{rsensor}: barnyard2 -c #{SnorbySuite::BARNYARD} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG} -d #{SnorbySuite::UNIFIEDDIR} -l #{SnorbySuite::LOGDIR} -f snort.u2.#{rsensor} -w #{SnorbySuite::WALDO}.#{rsensor} --nolock-pidfile"
+          end
         end
         File.expand_path("Procfile")
       end

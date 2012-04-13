@@ -14,6 +14,9 @@ module SnorbySuite
   LOGDIR = File.expand_path(".")
   
   EMBEDDED_PROCFILE = File.expand_path("../Procfile", __FILE__)
+
+  SENSORS = ENV['SUITE_SENSORS'].split(' ') if ENV['SUITE_SENSORS']
+  SENSORS ||= %w(LOKI ODIN THOR MAGNI BALDUR FREYA ASGARD RAGNAROK TYR VALKYRIES)
   
   require 'snorby_suite/pcapfactory'
   require 'snorby_suite/foreman'
