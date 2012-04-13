@@ -21,7 +21,7 @@ module SnorbySuite
       
       begin
         File.open(SnorbySuite::EMBEDDED_PROCFILE, "w") do |file|
-          SnorbySuite::SENSORS.each |rsensor| do 
+          SnorbySuite::SENSORS.each do |rsensor|  
             file.puts "alert_daemon_#{rsensor}: alert_daemon #{rsensor}"
             file.puts "barnyard_#{rsensor}: barnyard2 -c #{SnorbySuite::BARNYARD} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG} -d #{SnorbySuite::UNIFIEDDIR} -l #{SnorbySuite::LOGDIR} -f snort.u2.#{rsensor} -w #{SnorbySuite::WALDO}.#{rsensor} --nolock-pidfile"
           end
@@ -29,7 +29,7 @@ module SnorbySuite
         SnorbySuite::EMBEDDED_PROCFILE
       rescue
         File.open("Procfile", "w") do |file|
-          SnorbySuite::SENSORS.each |rsensor| do 
+          SnorbySuite::SENSORS.each do |rsensor|  
             file.puts "alert_daemon_#{rsensor}: alert_daemon #{rsensor}"
             file.puts "barnyard_#{rsensor}: barnyard2 -c #{SnorbySuite::BARNYARD} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG} -d #{SnorbySuite::UNIFIEDDIR} -l #{SnorbySuite::LOGDIR} -f snort.u2.#{rsensor} -w #{SnorbySuite::WALDO}.#{rsensor} --nolock-pidfile"
           end
