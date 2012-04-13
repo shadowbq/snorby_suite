@@ -8,10 +8,18 @@ Unpack, change directories, configure with mysql support, make and install.
 cd .rvm/gems/ruby-1.9.2-*@snorby_suite_env/distro
 tar -zxvf barnyard2*.tar.gz
 cd barnyard2*
+./autoconfig.sh
 ./configure --with-mysql
 make
 sudo make install
 ```
+
+### Advanced Explicit FreeSDB 9.0 64bit Mysql Config Example
+
+```bash
+./configure --with-mysql --with-mysql-includes=/usr/local/include/mysql --with-mysql-libraries=/usr/local/lib/mysql --prefix=/usr/local --mandir=/usr/local/man --infodir=/usr/local/info/ --build=amd64-portbld-freebsd9.0
+```
+
 
 ## Barnyard2 Configuration
 
