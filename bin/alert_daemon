@@ -5,6 +5,7 @@ require 'rubygems'
 require 'snorby_suite'
 require 'optparse'
 
+options = {}
 
 optparse = OptionParser.new do |opts|
   opts.banner = "Alert Daemon (Version #{SnorbySuite::VERSION} )"  
