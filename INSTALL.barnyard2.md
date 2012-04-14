@@ -2,6 +2,8 @@
 
 Install Barnyard2 for Unified2 File Reading
 
+https://github.com/firnsy/barnyard2
+
 Unpack, change directories, configure with mysql support, make and install. 
 
 ```bash
@@ -23,11 +25,11 @@ sudo make install
 
 ## Barnyard2 Configuration
 
-* Barnyard2 will be dynamically configured in the future for flexible user, password, and hostname 
+* Snorby_Suite's parallel Barnyard2 is dynamically configured for sensor hostnames use ENV['Suite_Sensors']
 
-* You can modify the `config hostname` to have multiple sensors insert data into snorby via the snorby_suite.
+* Traditionally you can modify the `config hostname` to have multiple sensors insert data into snorby. This setting is overridden on the commandline during the ProcFile Execution of snorby_suite.
 
-File: /home/johnsmith/.rvm/gems/ruby-1.9.3-p125@snorby_suite_env/gems/snorby_suite-0.0.1/etc/barnyard2.conf
+File: /home/johnsmith/.rvm/gems/ruby-1.9.3-p125@snorby_suite_env/gems/snorby_suite-*/etc/barnyard2.conf
 
 ```bash
 
@@ -35,8 +37,8 @@ File: /home/johnsmith/.rvm/gems/ruby-1.9.3-p125@snorby_suite_env/gems/snorby_sui
 #  Barnyard2 configuration file
 #-------------------------------------------------------------
 
-config hostname: jagau 
-config interface: eth0
+# config hostname: jagau 
+# config interface: eth0
 
 input unified2
 
