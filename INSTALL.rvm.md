@@ -1,6 +1,23 @@
 # Snorby Suite
 
-## Installation for rvm with ruby 1.9.2 and a non-conflicting custom gemset for user 'johnsmith'
+## Dependencies
+
+1.  Snort ~> 2.8 (2.x) 
+
+    Custom snort configs live in snory_suite
+
+2.  Mysql Client
+
+3.  Barnyard2 
+   
+    Use the Barnyard2 ~> 2.1.10-beta (a copy is in the distro folder of the repo) 
+
+4.  Snorby / WebServer+Rack / Mysql Server
+
+    (Snorby Server does not have to reside on same box as snorby_suite)
+
+
+## Installation for rvm with ruby ~> 1.9.2 (1.9.x) and a non-conflicting custom gemset for user 'johnsmith'
 
 Download and run the RVM installation script
 Installing the latest release version in git:
@@ -100,10 +117,13 @@ user$ git clone git://github.com/shadowbq/snorby_suite.git ~/snorby_suite
 user$ cd ~/snorby_suite
 [user@snorby_suite]$ bundle install
 [user@snorby_suite]$ gem build snorby_suite.gemspec 
-[user@snorby_suite]$ gem install ./snorby_suite-0.0.1.gem
+[user@snorby_suite]$ gem install ./snorby_suite-0.0.2.gem
 ```
 
 ## Install Snort / Barnyard2
+
+Barnyard must be barnyard2 ~> 2.1.10-beta 
+2.1.9 has bug that does not allow the use of -h for <hostname> 
 
 * Ubuntu / Debian
 
@@ -111,11 +131,13 @@ user$ cd ~/snorby_suite
 apt-get install snort barnyard2
 ```
 
-* FreeBSD
+* FreeBSD 
+   
+    Note: As of April 2012, FreeBSD does not track the github firnsy/barnyard2.
 
-```bash
-pkg_add -r snort barnyard2
-```
+~~pkg_add -r snort barnyard2~~
+
+* https://github.com/shadowbq/snorby_suite/blob/master/INSTALL.barnyard2.md
 
 ## Run Snorby Suite
 
