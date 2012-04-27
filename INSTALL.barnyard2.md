@@ -8,6 +8,12 @@ https://github.com/firnsy/barnyard2
 wget https://github.com/shadowbq/snorby_suite/raw/master/distro/barnyard2-1.10-beta-2.tar.gz
 ```
 
+Compilation Requirements
+
+* automake
+* autoconf
+* mysql
+
 Unpack, change directories, configure with mysql support, make and install. 
 
 ```bash
