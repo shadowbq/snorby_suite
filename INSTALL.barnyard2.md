@@ -4,6 +4,10 @@ Install Barnyard2 for Unified2 File Reading
 
 https://github.com/firnsy/barnyard2
 
+```bash
+wget https://github.com/shadowbq/snorby_suite/raw/master/distro/barnyard2-1.10-beta-2.tar.gz
+```
+
 Unpack, change directories, configure with mysql support, make and install. 
 
 ```bash
