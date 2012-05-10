@@ -20,7 +20,7 @@ Unpack, change directories, configure with mysql support, make and install.
 cd .rvm/gems/ruby-1.9.2-*@snorby_suite_env/distro
 tar -zxvf barnyard2*.tar.gz
 cd barnyard2*
-./autoconfig.sh
+./autogen.sh
 ./configure --with-mysql
 make
 sudo make install
