@@ -58,7 +58,7 @@ input unified2
 # Examples:
 #output database: log, mysql, user=root password=s3cr3ts@us3 dbname=snorby_development host=localhost
 
-output database: alert, mysql, user=snorby password=s3cr3tsauce dbname=snorby host=localhost
+output database: log, mysql, user=snorby password=s3cr3tsauce dbname=snorby host=localhost
 ```
 
 
