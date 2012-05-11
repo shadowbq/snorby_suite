@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Snorby suite by shadowbq</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/shadowbq/snorby_suite">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/shadowbq/snorby_suite/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/shadowbq/snorby_suite/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Snorby suite</h1>
+          <p>Snorby-Suite is a basic development and testing application wrapper for many tools required to load test and develop [Snorby](https://github.com/Snorby/snorby).</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/shadowbq">shadowbq</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>Snorby-Suite - Snorby Development, Stress and Testing Suite</h1>
+
+<p>Snorby-Suite is a basic development, stress and testing application wrapper for many tools required
+to load test and develop <a href="https://github.com/Snorby/snorby">Snorby</a>. </p>
+
+<p>Snort and its chain of alert mechanism can be complex and time consuming to setup. Snorby_suite is designed
+to quickly populate the Snorby (or other snort mysql db applications, such as BASE, OSSIM) database with actual
+alerts from the alert chain. Database seeds / Fixtures can be added for instant gratification, but random thumping of 
+snort alerts and the sheer numbers can be hard to model using just seed data.</p>
+
+<h2>Snorby</h2>
+
+<ul>
+<li>
+<a href="https://github.com/Snorby/snorby">Snorby</a> - Snorby is a ruby on rails web application for network security monitoring that interfaces with current popular intrusion detection systems (Snort, Suricata and Sagan). The basic fundamental concepts behind Snorby are simplicity, organization and power. The project goal is to create a free, open source and highly competitive application for network monitoring for both private and enterprise use.</li>
+</ul><h2>Use <a href="http://beginrescueend.com/">rvm</a> For Best Use Case</h2>
+
+<ul>
+<li>See <a href="snorby_suite/blob/master/INSTALL.rvm.md">INSTALL.rvm.md</a> for detailed setup instructions with snorby_suite.</li>
+</ul><p>Turn on your gemset for snorby_suite via rvm </p>
+
+<div class="highlight">
+<pre>user<span class="nv">$ </span>rvm 1.9.2@snorby_suite_env
+</pre>
+</div>
+
+
+<p>Run Snorby Suite</p>
+
+<div class="highlight">
+<pre>user<span class="nv">$ </span>snorby_suite 
+</pre>
+</div>
+
+
+<p>Dynamic procs to load up X snort and barnyard via ENV['SUITE_SENSORS']</p>
+
+<div class="highlight">
+<pre>user<span class="nv">$ SUITE_SENSORS</span><span class="o">=</span><span class="s2">"sensor1 sensor2 sensor3"</span> snorby_suite
+</pre>
+</div>
+
+
+<p><strong><em>From the author: Although not required, I highly recommend anyone using snorby_suite to use rvm with a independent gemset</em></strong></p>
+
+<h2>Bundled Components</h2>
+
+<p>Snorby-Suite comes bundled the following security tools and applications:</p>
+
+<p>Snorby-Suite will inject alerts by default from 10 Sensors, to populate your data.</p>
+
+<h3>Prebuilt Configuration Files</h3>
+
+<ul>
+<li>Snort IDS ~&gt; [2.8, 2.9] - <a href="http://www.snort.org/">More Info</a>
+</li>
+<li>Barnyard2 - <a href="http://www.securixlive.com/barnyard2/index.php">More Info</a>
+</li>
+<li>Community Snort ruleset - <a href="http://www.snort.org/snort-rules/?#rules">More Info</a>
+</li>
+<li>Foreman - <a href="https://github.com/ddollar/foreman">More Info</a>
+</li>
+</ul><h2>Requirements</h2>
+
+<h3>Notes on Privileged Access</h3>
+
+<ul>
+<li>You should not need <em>root</em> or <em>sudo</em> access to run <strong>snorby_suite</strong>, because the snort binary will not bind to an interface.</li>
+<li>Ensuring that your rvm instance is a local and not global will allow any user to run this application. (see INSTALL.RVM.md)</li>
+</ul><h3>Installed onto your users path:</h3>
+
+<ol>
+<li>Barnyard2 </li>
+<li>Snort ~&gt; [2.8, 2.9] - The snort daemon service is not required to be run, it will run as batch</li>
+</ol><h2>Barnyard2 Notes</h2>
+
+<ul>
+<li>see <a href="snorby_suite/blob/master/INSTALL.barnyard2.md">INSTALL.barnyard2.md</a>
+</li>
+<li>Barnyard2 distro is available in your gem path snorby_suite-*/disto/barnyard2.tar.gz.</li>
+<li><p>Barnyard2 will report as a NULL interface sensor.</p></li>
+<li>
+<p>You need to use Barnyard2.1.10.beta or greater. Available via github </p>
+
+<ul>
+<li><a href="https://github.com/firnsy/barnyard2">https://github.com/firnsy/barnyard2</a></li>
+</ul>
+</li>
+</ul><h2>Feedback/Support</h2>
+
+<ul>
+<li><a href="snorby-suite/issues">Snorby-Suite Issues Page</a></li>
+</ul><h2>Official Snorby Support</h2>
+
+<ul>
+<li><a href="https://github.com/Snorby/snorby/issues">Snorby Issues Page</a></li>
+<li><a href="http://groups.google.com/group/snorby">Snorby Mailing List</a></li>
+<li>Twitter - Jason Meller - @jmeller / Dustin Webber - <a href="https://github.com/dwebber" class="user-mention">@dwebber</a>
+</li>
+</ul><h2>Future Usage</h2>
+
+<p>Future usage will be to move to native rUnified2 gem to replace barnyard2.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
