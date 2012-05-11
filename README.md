@@ -60,7 +60,7 @@ Snorby-Suite will inject alerts by default from 10 Sensors, to populate your dat
 * Barnyard2 distro is available in your gem path snorby_suite-*/disto/barnyard2.tar.gz.
 * Barnyard2 will report as a NULL interface sensor.
 
-* You need to use Barnyard2.1.10.beta or greater. Avaiable via github 
+* You need to use Barnyard2.1.10.beta or greater. Available via github 
  - https://github.com/firnsy/barnyard2
 
 ## Feedback/Support
