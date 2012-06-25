@@ -14,6 +14,12 @@ Compilation Requirements
 * autoconf
 * mysql
 
+Ubuntu Extras
+* libpcap-dev
+* libmysqlclient-dev
+  * i386 (/usr/lib/i386-linux-gnu/libmysqlclient.so)
+  * x86_64 (/usr/lib64/mysql/)
+
 Unpack, change directories, configure with mysql support, make and install. 
 
 ```bash
