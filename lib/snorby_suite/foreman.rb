@@ -22,7 +22,7 @@ module SnorbySuite
       begin
         File.open(SnorbySuite::EMBEDDED_PROCFILE, "w") do |file|
           SnorbySuite::SENSORS.each do |rsensor|  
-            write_sensor(rsensor)
+            write_sensor(file, rsensor)
           end
         end
         SnorbySuite::EMBEDDED_PROCFILE
@@ -51,7 +51,7 @@ module SnorbySuite
 
    private
 
-    def write_sensor(rsensor)
+    def write_sensor(file, rsensor)
       file.puts "alert_daemon_#{rsensor}: alert_daemon --sensor #{rsensor}"
       file.puts "alert_daemon_#{rsensor}: alert_daemon --sensor #{rsensor} --pcap #{SnorbySuite::PCAPSAMPLEPATH}"
       file.puts "barnyard_#{rsensor}: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{rsensor} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG} -d #{SnorbySuite::UNIFIEDDIR} -l #{SnorbySuite::LOGDIR}     -f snort.u2.#{rsensor} -w #{SnorbySuite::WALDO}.#{rsensor} --nolock-pidfile"
