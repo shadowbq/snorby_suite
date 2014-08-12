@@ -22,6 +22,6 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "pcaprub"
   s.add_runtime_dependency "packetfu"
-  s.add_runtime_dependency "foreman"
+  s.add_runtime_dependency "foreman", ["= 0.46.0"]
 
 end
