@@ -17,7 +17,7 @@ optparse = OptionParser.new do |opts|
      options[:sensor] = t
   end
   opts.on("--pcap [NAME]", 
-    "Use random pcap from sample file library (#{SnorbySuite::PCAPSAMPLEPATH.join(', ')})") do |t| 
+    "Use random pcap from sample file library (#{SnorbySuite::PCAPSAMPLEPATH})") do |t| 
      options[:pcap] = t 
   end 
 
