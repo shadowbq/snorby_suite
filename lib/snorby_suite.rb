@@ -3,6 +3,7 @@ require "snorby_suite/version"
 module SnorbySuite
   
   SNORTCONF = File.expand_path("../../etc/snort.conf", __FILE__)
+  PCAPSAMPLEPATH = File.expand_path("../../pcaps/", __FILE__)
   BARNYARD = File.expand_path("../../etc/barnyard2.conf", __FILE__)
   CLASSIFICATION = File.expand_path("../../etc/classification.config", __FILE__)
   REFERENCE = File.expand_path("../../etc/reference.config", __FILE__)

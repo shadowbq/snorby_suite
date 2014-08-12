@@ -6,6 +6,7 @@ require 'snorby_suite'
 require 'optparse'
 
 options = {}
+options[:pcap] = false
 
 optparse = OptionParser.new do |opts|
   opts.banner = "Alert Daemon (Version #{SnorbySuite::VERSION} )"  
@@ -15,6 +16,11 @@ optparse = OptionParser.new do |opts|
     "Select Sensor (#{SnorbySuite::SENSORS.join(', ')})") do |t|
      options[:sensor] = t
   end
+  opts.on("--pcap [NAME]", 
+    "Use random pcap from sample file library (#{SnorbySuite::PCAPSAMPLEPATH.join(', ')})") do |t| 
+     options[:pcap] = t 
+  end 
+
   opts.on_tail( '-h', '--help', 'Display this screen' ) do
     puts opts
     exit
@@ -34,7 +40,12 @@ end
 
 factory = SnorbySuite::Pcapfactory.new
 
+def random_pcap
+  Dir.glob("#{options[:pcap]}").sample
+end
+
 def pcapfile
+  return random_pcap if options[:pcap]
   "/tmp/pcapfactory.pcap.#{$$}"
 end
 
