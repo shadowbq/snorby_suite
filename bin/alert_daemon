@@ -44,14 +44,14 @@ def random_pcap
   Dir.glob("#{options[:pcap]}").sample
 end
 
-def pcapfile
-  return random_pcap if options[:pcap]
+def pcapfile(location)
+  return random_pcap if location
   "/tmp/pcapfactory.pcap.#{$$}"
 end
 
 loop do
 
-  factory.filename = pcapfile
+  factory.filename = pcapfile(options[:pcap])
   puts "Regenerating pcap file '#{factory.filename}' .."
   
   factory.generate
