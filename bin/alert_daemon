@@ -12,8 +12,8 @@ optparse = OptionParser.new do |opts|
   opts.banner = "Alert Daemon (Version #{SnorbySuite::VERSION} )"  
   opts.separator "Usage: #$0 [options]"
   # Optional argument with keyword completion.
-  opts.on("--sensor [NAME]", SnorbySuite::SENSORS,
-    "Select Sensor (#{SnorbySuite::SENSORS.join(', ')})") do |t|
+  opts.on("--sensor [NAME]", SnorbySuite::SENSORS.sample,
+    "Select a Sensor (#{SnorbySuite::SENSORS.join(', ')})") do |t|
      options[:sensor] = t
   end
   opts.on("--pcap [NAME]", 
@@ -27,7 +27,7 @@ optparse = OptionParser.new do |opts|
   end
 end
 
-#Verrify the options
+#Verify the options
 begin
   raise unless ARGV.size > 0
   optparse.parse!
@@ -40,29 +40,33 @@ end
 
 factory = SnorbySuite::Pcapfactory.new
 
-def random_pcap
-  Dir.glob("#{options[:pcap]}").sample
-end
 
 def pcapfile(location)
-  return random_pcap if location
-  "/tmp/pcapfactory.pcap.#{$$}"
+  return Dir.glob(location + '/*.pcap').sample if location
 end
 
 loop do
 
-  factory.filename = pcapfile(options[:pcap])
-  puts "Regenerating pcap file '#{factory.filename}' .."
+  if not options[:pcap]
+    factory.filename = "/tmp/pcapfactory.pcap.#{$$}"
+    #puts "Regenerating pcap file '#{factory.filename}' .."
+    factory.generate
+    factory.write_pcaps
   
-  factory.generate
-  factory.write_pcaps
+    puts "Running Snort.. #{factory.filename}"
+    `snort -r #{factory.filename} -S U2EXT=#{options[:sensor]} -c #{SnorbySuite::SNORTCONF} -l #{SnorbySuite::UNIFIEDDIR} -q`
+    puts "Closing Snort."
   
-  puts "Running Snort.."
-  `snort -r #{factory.filename} -S U2EXT=#{options[:sensor]} -c #{SnorbySuite::SNORTCONF} -l #{SnorbySuite::UNIFIEDDIR} -q`
-  puts "Closing Snort."
+    sleep(15)
+    factory.flush
+  else
+    snort_pcapfile = pcapfile(options[:pcap])
+    puts "Running Snort.. #{snort_pcapfile}"
+    `snort -r #{snort_pcapfile} -S U2EXT=#{options[:sensor]} -c #{SnorbySuite::SNORTCONF} -l #{SnorbySuite::UNIFIEDDIR} -q`
+    puts "Closing Snort."
   
-  sleep(15)
-  factory.flush
+    sleep(15)
+  end  
 end
 
 

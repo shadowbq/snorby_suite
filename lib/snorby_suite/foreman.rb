@@ -52,9 +52,12 @@ module SnorbySuite
    private
 
     def write_sensor(file, rsensor)
+      
       file.puts "alert_daemon_#{rsensor}: alert_daemon --sensor #{rsensor}"
       file.puts "alert_daemon_#{rsensor}: alert_daemon --sensor #{rsensor} --pcap #{SnorbySuite::PCAPSAMPLEPATH}"
-      file.puts "barnyard_#{rsensor}: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{rsensor} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG} -d #{SnorbySuite::UNIFIEDDIR} -l #{SnorbySuite::LOGDIR}     -f snort.u2.#{rsensor} -w #{SnorbySuite::WALDO}.#{rsensor} --nolock-pidfile"
+      #file.puts "barnyard_#{rsensor}_u2: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{rsensor} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG}  -l #{SnorbySuite::LOGDIR} -o #{SnorbySuite::UNIFIEDDIR}/multi-record-event-x2.log -w /tmp/waldo.u2.#{rsensor} -U -O --nolock-pidfile"
+      file.puts "barnyard_#{rsensor}: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{rsensor} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG} -d #{SnorbySuite::UNIFIEDDIR} -l #{SnorbySuite::LOGDIR} -f snort.u2.#{rsensor} -w /tmp/waldo.#{rsensor} --nolock-pidfile"
+            
     end
 
   end

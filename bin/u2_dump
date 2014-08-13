@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+#
+$:.unshift(File.dirname(__FILE__))
+require 'rubygems'
+require 'snorby_suite'
+require 'optparse'
+
+options = {}
+options[:u2] = SnorbySuite::UNIFIEDDIR
+
+optparse = OptionParser.new do |opts|
+  opts.banner = "Alert Daemon (Version #{SnorbySuite::VERSION} )"  
+  opts.separator "Usage: #$0 [options]"
+  # Optional argument with keyword completion.
+  opts.on("--sensor [NAME]", SnorbySuite::SENSORS.sample,
+    "Select Sensor a (#{SnorbySuite::SENSORS.join(', ')})") do |t|
+     options[:sensor] = t
+  end
+  opts.on("--u2 [NAME]", SnorbySuite::UNIFIEDDIR,
+    "Use unified2 log from sample file library (#{SnorbySuite::UNIFIEDDIR})") do |t| 
+     options[:u2] = t 
+  end 
+
+  opts.on_tail( '-h', '--help', 'Display this screen' ) do
+    puts opts
+    exit
+  end
+end
+
+#Verify the options
+begin
+  raise unless ARGV.size > 0
+  optparse.parse!
+  
+#If options fail display help
+rescue
+  puts optparse
+  exit
+end
+
+
+def get_u2file(location)
+  return Dir.glob(location + '/*.log').sample if location
+end
+
+u2file = get_u2file(options[:u2])
+puts "barnyard_#{options[:sensor]}_u2: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG}  -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile"
+`barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG}  -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile`
