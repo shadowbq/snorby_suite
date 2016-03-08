@@ -4,9 +4,9 @@ require "foreman/engine"
 module SnorbySuite
 
   class ForemanController
-    
+
     attr_accessor :procfile
-    
+
     def start(process=nil)
       check_procfile!
 
@@ -16,27 +16,27 @@ module SnorbySuite
         engine.start
       end
     end
-    
+
     def create_procfile
-      
+
       begin
         File.open(SnorbySuite::EMBEDDED_PROCFILE, "w") do |file|
-          SnorbySuite::SENSORS.each do |rsensor|  
+          SnorbySuite::SENSORS.each do |rsensor|
             write_sensor(file, rsensor)
           end
         end
         SnorbySuite::EMBEDDED_PROCFILE
       rescue
         File.open("Procfile", "w") do |file|
-          SnorbySuite::SENSORS.each do |rsensor|  
+          SnorbySuite::SENSORS.each do |rsensor|
             write_sensor(rsensor)
           end
         end
         File.expand_path("Procfile")
       end
-      
+
     end
-    
+
     def engine
       @engine ||= Foreman::Engine.new(@procfile)
     end
@@ -44,7 +44,7 @@ module SnorbySuite
     def check_procfile!
       if File.exist?("Procfile")
         @procfile = "Procfile"
-      else 
+      else
         @procfile = create_procfile
       end
     end
@@ -52,12 +52,12 @@ module SnorbySuite
    private
 
     def write_sensor(file, rsensor)
-      
+
       file.puts "alert_daemon_#{rsensor}: alert_daemon --sensor #{rsensor}"
       file.puts "alert_daemon_#{rsensor}: alert_daemon --sensor #{rsensor} --pcap #{SnorbySuite::PCAPSAMPLEPATH}"
       #file.puts "barnyard_#{rsensor}_u2: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{rsensor} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG}  -l #{SnorbySuite::LOGDIR} -o #{SnorbySuite::UNIFIEDDIR}/multi-record-event-x2.log -w /tmp/waldo.u2.#{rsensor} -U -O --nolock-pidfile"
-      file.puts "barnyard_#{rsensor}: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{rsensor} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG} -d #{SnorbySuite::UNIFIEDDIR} -l #{SnorbySuite::LOGDIR} -f snort.u2.#{rsensor} -w /tmp/waldo.#{rsensor} --nolock-pidfile"
-            
+      file.puts "barnyard_#{rsensor}: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{rsensor} -d #{SnorbySuite::UNIFIEDDIR} -l #{SnorbySuite::LOGDIR} -f snort.u2.#{rsensor} -w /tmp/waldo.#{rsensor} --nolock-pidfile"
+
     end
 
   end

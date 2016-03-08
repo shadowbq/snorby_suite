@@ -45,10 +45,10 @@ end
 
 u2file = get_u2file(options[:u2])
 
-if (ENV["full_cli"])
-  puts "barnyard_#{options[:sensor]}_u2: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG}  -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile"
-  `barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG}  -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile`
-else
+#if (ENV["full_cli"])
+#  puts "barnyard_#{options[:sensor]}_u2: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG}  -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile"
+#  `barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG}  -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile`
+#else
   puts "barnyard_#{options[:sensor]}_u2: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile"
   `barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile`
-end
+#end

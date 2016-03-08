@@ -11,7 +11,6 @@ Gem::Specification.new do |s|
   s.homepage    = ""
   s.summary     = %q{Snorby Development Test Suite}
   s.description = %q{Snorby development and testing suite for snort rails application.}
-
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = ["alert_daemon", "snorby_suite", "u2_dump"]
