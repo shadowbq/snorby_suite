@@ -1,7 +1,3 @@
-# $Id$
-# Format: SID || MSG || Optional References || Optional References ...
-# SID -> MSG map
-
 103 || BACKDOOR subseven 22 || arachnids,485 || url,www.hackfix.org/subseven/
 104 || BACKDOOR - Dagger_1.4.0_client_connect || arachnids,483 || url,www.tlsecurity.net/backdoor/Dagger.1.4.html
 105 || BACKDOOR - Dagger_1.4.0 || arachnids,484 || url,www.tlsecurity.net/backdoor/Dagger.1.4.html

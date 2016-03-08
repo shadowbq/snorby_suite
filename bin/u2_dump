@@ -9,7 +9,7 @@ options = {}
 options[:u2] = SnorbySuite::UNIFIEDDIR
 
 optparse = OptionParser.new do |opts|
-  opts.banner = "Alert Daemon (Version #{SnorbySuite::VERSION} )"  
+  opts.banner = "Alert Daemon (Version #{SnorbySuite::VERSION} )"
   opts.separator "Usage: #$0 [options]"
   # Optional argument with keyword completion.
   opts.on("--sensor [NAME]", SnorbySuite::SENSORS.sample,
@@ -17,9 +17,9 @@ optparse = OptionParser.new do |opts|
      options[:sensor] = t
   end
   opts.on("--u2 [NAME]", SnorbySuite::UNIFIEDDIR,
-    "Use unified2 log from sample file library (#{SnorbySuite::UNIFIEDDIR})") do |t| 
-     options[:u2] = t 
-  end 
+    "Use unified2 log from sample file library (#{SnorbySuite::UNIFIEDDIR})") do |t|
+     options[:u2] = t
+  end
 
   opts.on_tail( '-h', '--help', 'Display this screen' ) do
     puts opts
@@ -31,7 +31,7 @@ end
 begin
   raise unless ARGV.size > 0
   optparse.parse!
-  
+
 #If options fail display help
 rescue
   puts optparse
@@ -44,5 +44,11 @@ def get_u2file(location)
 end
 
 u2file = get_u2file(options[:u2])
-puts "barnyard_#{options[:sensor]}_u2: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG}  -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile"
-`barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG}  -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile`
+
+if (ENV["full_cli"])
+  puts "barnyard_#{options[:sensor]}_u2: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG}  -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile"
+  `barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -C #{SnorbySuite::CLASSIFICATION} -R #{SnorbySuite::REFERENCE} -G #{SnorbySuite::GENMSG} -S #{SnorbySuite::SIDMSG}  -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile`
+else
+  puts "barnyard_#{options[:sensor]}_u2: barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile"
+  `barnyard2 -c #{SnorbySuite::BARNYARD} -h #{options[:sensor]} -l #{SnorbySuite::LOGDIR} -q -o #{u2file} -U -O --nolock-pidfile`
+end
